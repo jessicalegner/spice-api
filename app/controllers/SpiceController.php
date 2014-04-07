@@ -86,7 +86,22 @@ class SpiceController extends \BaseController {
 	 */
 	public function destroy($id)
 	{
-		//
+		$spice = Spice::find($id);
+
+		if($spice) {
+			$spice->delete();
+
+			return Response::json([
+				'message' => 'Spice has been deleted.'
+			], 200);
+		}
+
+		return Response::json([
+			'error' => [
+				'message' => 'That spice could not be found.',
+				'code' => '003'
+			]
+		], 404);
 	}
 
 	/**
