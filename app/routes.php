@@ -13,7 +13,7 @@
 
 Route::group(['prefix' => 'api/v1'], function() {
 	Route::resource('Spices', 'SpiceController');
-	
-	Route::get('/spices/user/{user}', 'SpiceController@userSpices');
+
+	Route::get('/Spices/user/{user}', 'SpiceController@userSpices');
 });
 
