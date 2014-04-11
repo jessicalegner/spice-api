@@ -51,7 +51,7 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 
 	public function spices()
 	{
-		return $this->belongsToMany('Spice');
+		return $this->belongsToMany('Spice')->withPivot('expiration', 'amount');
 	}
 
 }
