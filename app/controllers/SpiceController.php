@@ -36,11 +36,12 @@ class SpiceController extends \BaseController {
 	 * Display the specified resource.
 	 *
 	 * @param  int  $id
+	 * @param  int  $user
 	 * @return Response
 	 */
-	public function show($id)
+	public function show($id, $user)
 	{
-		$spice = Spice::find($id);
+		$spice = User::find($user)->spices()->where('spice_id', '=', $id)->get();
 
 		if( ! $spice) {
 			return Response::json([
@@ -51,9 +52,7 @@ class SpiceController extends \BaseController {
 			], 404);
 		}
 
-		return Response::json([
-			'data' => $spice->toArray()
-		], 200);
+		return Response::json($spice->toArray(), 200);
 	}
 
 	/**
